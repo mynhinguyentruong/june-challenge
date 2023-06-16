@@ -46,7 +46,8 @@ export default function Root() {
           </nav>
           Avatar here
         </div>
-      </div>    
+      </div>
+      Display a list of book    
       <Outlet />  
       </>      
     );

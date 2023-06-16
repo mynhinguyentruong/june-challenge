@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import BookPage from './routes/books/BookPage.jsx';
 
-import { store } from './app/store'
+import { store } from './store'
 import { Provider } from 'react-redux'
 
 const router = createBrowserRouter([

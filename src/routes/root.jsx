@@ -1,7 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import BookList from "../components/BookList";
 
 
 export default function Root() {
+    const books = useSelector(state => state.books.value)
+    console.log({books});
     return (
         <>
         <div className="w-full mx-auto bg-white border-b 2xl:max-w-7xl">
@@ -47,7 +51,8 @@ export default function Root() {
           Avatar here
         </div>
       </div>
-      Display a list of book    
+      Display a list of book
+      <BookList books={books} />
       <Outlet />  
       </>      
     );

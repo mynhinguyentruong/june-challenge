@@ -7,11 +7,7 @@ import { fetchBooks } from "../features/books/booksSlice";
 
 
 export default function Root() {
-    const dispatch = useDispatch()
-
-    const books = useSelector(state => state.books.books)
-    console.log({books});
-
+  
     // Make a request -> Do this with redux thunk
     // const { data: books, error } = await supabase.from('todos').select('*')
 
@@ -24,9 +20,7 @@ export default function Root() {
 // .insert({ id: 1, name: 'Denmark' })
 
 
-    useEffect(() => {
-       dispatch(fetchBooks())
-    }, [])
+
     return (
         <>
         <div className="w-full mx-auto bg-white border-b 2xl:max-w-7xl">
@@ -56,24 +50,15 @@ export default function Root() {
               </li>
               <li>
                 <a href="#" className="px-2 py-8 text-sm text-gray-500 border-b-2 border-transparent lg:px-6 md:px-3 hover:text-blue-600 hover:border-blue-500">
-                  New courses
+                  New book
                 </a>
               </li>
-              <li>
-                <a href="#" className="px-2 py-8 text-sm text-gray-500 border-b-2 border-transparent lg:px-6 hover:border-blue-500 md:px-3 hover:text-blue-600">
-                  Free
-                  <span className="hidden lg:inline">
-                    Courses
-                  </span>
-                </a>
-              </li>
+           
             </ul>
           </nav>
           Avatar here
         </div>
       </div>
-      Display a list of book
-      <BookList books={books} />
       <Outlet />  
       </>      
     );

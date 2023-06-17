@@ -1,6 +1,10 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { fetchBooks, supabase } from "../features/books/booksSlice"
 
 export default function BookForm() {
+    const dispatch = useDispatch()
+
     const [form, setForm] = useState({
         name: "",
         price: "",
@@ -16,8 +20,28 @@ export default function BookForm() {
 
         console.log(form);
     }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const { error } = await supabase.from('Books').insert(form)
+
+        if (error) { 
+            alert('Failed to submit book')
+            return
+        }
+
+        dispatch(fetchBooks())
+
+        setForm({
+            name: "",
+            price: "",
+            imageSrc: "",
+            imageAlt: ""
+        })
+    }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="space-y-1 px-10 pt-10">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">Add New Book</h2>

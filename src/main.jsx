@@ -8,10 +8,13 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import BookPage from './routes/books/BookPage.jsx';
 
 import { store } from './store'
 import { Provider } from 'react-redux'
+import BookList from './components/BookList';
+import Book from './components/Book';
+
+import { supabase } from './features/books/booksSlice';
 
 const router = createBrowserRouter([
   {
@@ -20,11 +23,22 @@ const router = createBrowserRouter([
     children: [
       {
         path: "books",
-        element: <BookPage />,
+        element: <BookList />,
         // loader: async () => {
-        //   return null; // fetch books data
+          
+
+        //   return books; // fetch books data
         // },
       },
+      {
+        path: "/book/:id",
+        element: <Book />,
+        loader: async ({params}) => {
+          const { data: book, error } = await supabase.from('Books').select('*').eq('id', parseInt(params.id))
+          if (error) return error
+          return book[0]
+        }
+      }
     ],
   },
 ]);

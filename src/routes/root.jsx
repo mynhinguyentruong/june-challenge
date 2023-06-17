@@ -1,11 +1,32 @@
 import { Link, Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import BookList from "../components/BookList";
+import { useEffect } from "react";
+import { fetchBooks } from "../features/books/booksSlice";
+
 
 
 export default function Root() {
-    const books = useSelector(state => state.books.value)
+    const dispatch = useDispatch()
+
+    const books = useSelector(state => state.books.books)
     console.log({books});
+
+    // Make a request -> Do this with redux thunk
+    // const { data: books, error } = await supabase.from('todos').select('*')
+
+
+//     Perform an INSERT into the table or view.
+
+
+// const { error } = await supabase
+// .from('countries')
+// .insert({ id: 1, name: 'Denmark' })
+
+
+    useEffect(() => {
+       dispatch(fetchBooks())
+    }, [])
     return (
         <>
         <div className="w-full mx-auto bg-white border-b 2xl:max-w-7xl">

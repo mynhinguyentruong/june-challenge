@@ -1,26 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux'
-import BookList from "../components/BookList";
-import { useEffect } from "react";
-import { fetchBooks } from "../features/books/booksSlice";
-
-
 
 export default function Root() {
   
-    // Make a request -> Do this with redux thunk
-    // const { data: books, error } = await supabase.from('todos').select('*')
-
-
-//     Perform an INSERT into the table or view.
-
-
-// const { error } = await supabase
-// .from('countries')
-// .insert({ id: 1, name: 'Denmark' })
-
-
-
     return (
         <>
         <div className="w-full mx-auto bg-white border-b 2xl:max-w-7xl">
@@ -49,9 +30,9 @@ export default function Root() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="px-2 py-8 text-sm text-gray-500 border-b-2 border-transparent lg:px-6 md:px-3 hover:text-blue-600 hover:border-blue-500">
+                <Link to={"/book/new"} className="px-2 py-8 text-sm text-gray-500 border-b-2 border-transparent lg:px-6 md:px-3 hover:text-blue-600 hover:border-blue-500">
                   New book
-                </a>
+                </Link>
               </li>
            
             </ul>

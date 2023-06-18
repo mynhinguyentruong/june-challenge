@@ -14,6 +14,8 @@ export default function Search() {
     }
 
     const handleSearch = useCallback(() => {
+        if (!userInput) return null
+
         const b = books.filter(book => book.name.toLowerCase().includes(userInput.toLowerCase()))
 
         return (

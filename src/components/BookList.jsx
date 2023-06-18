@@ -1,18 +1,11 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchBooks } from "../features/books/booksSlice";
+import { useSelector } from 'react-redux';
 
 import { Link } from "react-router-dom";
 
 
 export default function BookList() {
 
-  const dispatch = useDispatch()
   const books = useSelector(state => state.books.books)
-
-  useEffect(() => {
-    dispatch(fetchBooks())
-  }, [])
 
     return (
       <div className="bg-white">

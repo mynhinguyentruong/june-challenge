@@ -36,11 +36,6 @@ const router = createBrowserRouter([
       {
         path: "books",
         element: <BookList />,
-        // loader: async () => {
-          
-
-        //   return books; // fetch books data
-        // },
       },
       {
         path: "/book/:id",

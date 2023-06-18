@@ -6,13 +6,17 @@ import './index.css'
 
 import {
   createBrowserRouter,
+  redirect,
   RouterProvider,
 } from "react-router-dom";
 
 import { store } from './store'
 import { Provider } from 'react-redux'
+
 import BookList from './components/BookList';
 import Book from './components/Book';
+import BookForm from './components/BookForm';
+import Login from './routes/login/Login';
 
 import { supabase } from './features/books/booksSlice';
 
@@ -20,6 +24,13 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root/>,
+    loader: async () => {
+      const { data, } = await supabase.auth.getSession()
+      console.log({data});
+      if (!data.session) return redirect('/login')
+
+      return data.session
+    },
     children: [
       {
         path: "books",
@@ -38,9 +49,19 @@ const router = createBrowserRouter([
           if (error) return error
           return book[0]
         }
+      },
+      {
+        path: "/book/new",
+        element: <BookForm />,
+       
       }
     ],
+
   },
+  {
+    path: '/login',
+    element: <Login />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

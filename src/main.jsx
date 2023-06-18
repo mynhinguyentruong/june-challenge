@@ -19,6 +19,7 @@ import BookForm from './components/BookForm';
 import Login from './routes/login/Login';
 
 import { supabase } from './features/books/booksSlice';
+import Search from './routes/book/Search';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
       {
         path: "/book/new",
         element: <BookForm />,
+       
+      },
+      {
+        path: "/book/search",
+        element: <Search />,
        
       }
     ],

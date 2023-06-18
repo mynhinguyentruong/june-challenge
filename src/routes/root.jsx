@@ -34,6 +34,11 @@ export default function Root() {
                   New book
                 </Link>
               </li>
+              <li>
+                <Link to={"/book/search"} className="px-2 py-8 text-sm text-gray-500 border-b-2 border-transparent lg:px-6 md:px-3 hover:text-blue-600 hover:border-blue-500">
+                  Search
+                </Link>
+              </li>
            
             </ul>
           </nav>

@@ -23,6 +23,7 @@ export default function BookForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         const { error } = await supabase.from('Books').insert(form)
 
         if (error) { 
@@ -111,7 +112,7 @@ export default function BookForm() {
             </div>
 
             <div className="sm:col-span-4">
-              <label htmlFor="imageAtl" className="block text-sm font-medium leading-6 text-gray-900">
+              <label htmlFor="imageAlt" className="block text-sm font-medium leading-6 text-gray-900">
                 Please provide an alt for your image!
               </label>
               <div className="mt-2">
